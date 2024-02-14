@@ -1,3 +1,10 @@
+* {
+    font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
     display: grid;
     justify-items: center;
@@ -14,7 +21,10 @@ body {
 
 .top-banner {
     width: 100%;
-    background: rgb(153,188,234);
+    background: #f2f6fc;
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
 .card {
