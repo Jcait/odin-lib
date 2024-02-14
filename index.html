@@ -12,10 +12,10 @@
             <h1>Book Collection</h1>
             <h2>Add a New book</h2>
             <button class="new-book">Test</button>
-            <form>
+            <form  class="add-book" hidden>
                 <p>
                     <label for="name">Name</label>
-                    <input name="name" id="name" type="text">
+                    <input class="name" name="name" id="name" type="text">
                 </p>
                 <p>
                     <label for="author">Author</label>
@@ -25,7 +25,17 @@
                     <label for="pages">No. of pages</label>
                     <input name="pages" id="pages" type="text">
                 </p>
-                <p></p>
+                <p>
+                    <fieldset class="book-read">
+                        <label for="read">Read</label>
+                        <input id="read" name="read" type="radio" value="true">
+                        <label for="not-read">Not-Read</label>
+                        <input id="not-read" name="read" type="radio" value="false">
+                    </fieldset>
+                </p>
+                <p>
+                    <input class="form-submit" type="submit">
+                </p>
             </form>
         </div>
         <div class="book-list">
