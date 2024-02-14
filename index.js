@@ -2,7 +2,6 @@ const newBook = document.querySelector(".new-book")
 const bookList = document.querySelector(".book-list")
 const bookForm = document.querySelector(".add-book")
 const btnSubmit = document.querySelector(".form-submit")
-const selected = document.querySelector('input:checked');
 let libCount = 0
 
 let myLibrary = [{name: "test", author: "test", pages: "test", read: "test"}, 
@@ -43,9 +42,6 @@ function Book(name, author, pages, read ){
 }
 
 newBook.addEventListener("click", () => {
-    // const book = new Book("one", "two", "three", "four")
-    // myLibrary.push(book)
-    // update() 
     if(bookForm.hidden) {
         bookForm.hidden = false
     } else {
@@ -54,9 +50,16 @@ newBook.addEventListener("click", () => {
 })
 
 const addToLib = function(event){
+    // no database so no default submit
     event.preventDefault()
     const name = document.querySelector(".name").value
+    const author = document.querySelector(".author").value
+    const pages = document.querySelector(".pages").value
+    const selected = document.querySelector('input:checked').value;
+    const addB = new Book(name, author, pages, selected)
+    myLibrary.push(addB)
     console.log(name)
+    update()
 }
 
 btnSubmit.addEventListener("click", addToLib, false)
