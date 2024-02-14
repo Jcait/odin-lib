@@ -50,6 +50,8 @@ body {
     border: solid 2px #ea99e6;
     border-radius: 6px;
     justify-items: center;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .card > h2, h3 {
@@ -73,6 +75,15 @@ body {
     justify-self: start;
     align-self: center;
 }
+
+.card > img {
+    height: 1em;
+    grid-column: 2/3;
+    justify-self: end;
+    align-self: end;
+    cursor: pointer;
+}
+
 
 .book-list {
     display: flex;

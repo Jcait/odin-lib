@@ -2,6 +2,7 @@ const newBook = document.querySelector(".new-book")
 const bookList = document.querySelector(".book-list")
 const bookForm = document.querySelector(".add-book")
 const btnSubmit = document.querySelector(".form-submit")
+const delBtn = document.querySelector(".delete-button")
 let libCount = 0
 
 let myLibrary = [{name: "test", author: "test", pages: "test", read: "test"}, 
@@ -47,6 +48,10 @@ newBook.addEventListener("click", () => {
     } else {
         bookForm.hidden = true
     }
+})
+
+delBtn.addEventListener("click", () => {
+    console.log("beep")
 })
 
 const addToLib = function(event){
