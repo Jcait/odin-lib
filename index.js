@@ -18,15 +18,25 @@ const update = () => myLibrary.forEach((book, i) => {
         return
     } else {
         const newDiv = document.createElement("div")
-        const cardTitle = document.createElement("h1")
-        const author = document.createElement("h2")
-        cardTitle.innerText = book.name
-        author.innerText = book.author
+        const cardTitle = document.createElement("h2")
+        const author = document.createElement("h3")
+        const read = document.createElement("p")
+        const pages = document.createElement("p")
+        cardTitle.innerText = `Titie: ${book.name}`
+        author.innerText = `Author: ${book.author}`
+        if(book.read) {
+            read.innerText = "Read"
+        } else {
+            read.innerText = "Not-Read"
+        }
+        pages.innerText = book.pages
         newDiv.className = "card"
         book.index = i
         bookList.append(newDiv)
-        newDiv.append(cardTitle)
-        newDiv.append(author)
+        newDiv.append(cardTitle, author, read, pages)
+        // newDiv.append(author)
+        // newDiv.append(read)
+        // newDiv.append(pages)
         console.log(`book index: ${book.index}`)
         libCount++
     }
@@ -50,8 +60,9 @@ newBook.addEventListener("click", () => {
     }
 })
 
-delBtn.addEventListener("click", () => {
-    console.log("beep")
+delBtn.addEventListener("click", function() {
+    console.log(this.parentNode)
+    this.parentNode.parentNode.removeChild(this.parentNode)
 })
 
 const addToLib = function(event){
