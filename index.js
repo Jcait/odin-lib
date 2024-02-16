@@ -22,6 +22,8 @@ const update = () => myLibrary.forEach((book, i) => {
         const author = document.createElement("h3")
         const read = document.createElement("p")
         const pages = document.createElement("p")
+        const delBtn = document.createElement("img")
+        delBtn.src = "trash-outline.svg"
         cardTitle.innerText = `Titie: ${book.name}`
         author.innerText = `Author: ${book.author}`
         if(book.read == "true") {
@@ -32,10 +34,17 @@ const update = () => myLibrary.forEach((book, i) => {
         pages.innerText = book.pages
         newDiv.className = "card"
        pages.className = "pages"
+       delBtn.className = "delete-button"
        read.className = "is-read"
         book.index = i
         bookList.append(newDiv)
-        newDiv.append(cardTitle, author, read, pages)
+        newDiv.append(cardTitle, author, read, pages,delBtn)
+        delBtn.addEventListener("click", function() {
+            console.log(book.index)
+            this.parentNode.parentNode.removeChild(this.parentNode)
+            myLibrary.splice(book.index, 1)
+
+        })
         // newDiv.append(author)
         // newDiv.append(read)
         // newDiv.append(pages)
@@ -62,10 +71,7 @@ newBook.addEventListener("click", () => {
     }
 })
 
-delBtn.addEventListener("click", function() {
-    console.log(this.parentNode)
-    this.parentNode.parentNode.removeChild(this.parentNode)
-})
+
 
 const addToLib = function(event){
     // no database so no default submit
