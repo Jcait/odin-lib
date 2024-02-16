@@ -5,8 +5,8 @@ const btnSubmit = document.querySelector(".form-submit")
 const delBtn = document.querySelector(".delete-button")
 let libCount = 0
 
-let myLibrary = [{name: "test", author: "test", pages: "test", read: "test"}, 
-{name: "test", author: "test", pages: "test", read: "test"}]
+let myLibrary = [{name: "test", author: "test", pages: "test", read: "true"}, 
+{name: "test", author: "test", pages: "test", read: "false"}]
 
 myLibrary.forEach ((book) => {
     console.log(book.name)
@@ -24,13 +24,15 @@ const update = () => myLibrary.forEach((book, i) => {
         const pages = document.createElement("p")
         cardTitle.innerText = `Titie: ${book.name}`
         author.innerText = `Author: ${book.author}`
-        if(book.read) {
+        if(book.read == "true") {
             read.innerText = "Read"
         } else {
             read.innerText = "Not-Read"
         }
         pages.innerText = book.pages
         newDiv.className = "card"
+       pages.className = "pages"
+       read.className = "is-read"
         book.index = i
         bookList.append(newDiv)
         newDiv.append(cardTitle, author, read, pages)
