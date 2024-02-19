@@ -33,15 +33,20 @@ const update = function() {
         pages.innerText = book.pages
        pages.className = "pages"
 
+       const readBtn = document.createElement("img")
+       readBtn.className ="read-button"
+       readBtn.src = "book-outline.svg"
+
         const delBtn = document.createElement("img")
         read.className = "is-read"
 
         delBtn.src = "trash-outline.svg"
 
 
+
        delBtn.className = "delete-button"
         bookList.append(newDiv)
-        newDiv.append(cardTitle, author, read, pages,delBtn)
+        newDiv.append(cardTitle, author, pages,read, readBtn, delBtn)
         delBtn.addEventListener("click", function() {
             console.log(book.index)
             this.parentNode.parentNode.removeChild(this.parentNode)
@@ -49,7 +54,17 @@ const update = function() {
 
 
         })
-
+        readBtn.addEventListener("click", function() {
+            let readText = this.previousElementSibling.innerText
+            console.log(readText)
+            if ( readText == "Read") {
+                this.previousElementSibling.innerText = "Not-Read"
+                console.log(readText)
+            } else {
+                this.previousElementSibling.innerText = "Read"
+                console.log(readText)
+            }
+        } )
         } else {
             return
         }
@@ -74,12 +89,20 @@ newBook.addEventListener("click", () => {
 
 
 
+
 const addToLib = function(event){
-    event.preventDefault()
+
             const name = document.querySelector(".name").value
             const author = document.querySelector(".author").value
             const pages = document.querySelector(".pages").value
             const selected = document.querySelector('input:checked').value;
+            if(!name ||
+                !author || 
+                !pages ||
+                !selected) {
+                    return ""
+            }
+            event.preventDefault()
             const addB = new Book(name, author, pages, selected)
             myLibrary.push(addB)
             console.log(name)

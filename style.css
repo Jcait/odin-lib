@@ -107,3 +107,14 @@ body {
 fieldset {
     border: none;
 }
+
+.new-book:active {
+    background-color: #5984d8;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  .card > .read-button {
+    grid-column: 1/2;
+    justify-self: flex-start;
+  }
