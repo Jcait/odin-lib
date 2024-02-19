@@ -91,15 +91,20 @@ newBook.addEventListener("click", () => {
 
 
 const addToLib = function(event){
-    event.preventDefault()    
+    event.preventDefault()                
             const name = document.querySelector(".name").value
             const author = document.querySelector(".author").value
             const pages = document.querySelector(".pages").value
             const selected = document.querySelector('input:checked').value;
             const addB = new Book(name, author, pages, selected)
-            myLibrary.push(addB)
-            console.log(name)
-            update()
+            if(!name || !author|| !pages) {
+                return ""
+            } else {
+                myLibrary.push(addB)
+                console.log(name)
+                update()
+            }
+
 
     }
     // no database so no default submit
