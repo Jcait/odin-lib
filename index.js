@@ -91,7 +91,7 @@ newBook.addEventListener("click", () => {
 
 
 const addToLib = function(event){
-
+    event.preventDefault()
             const name = document.querySelector(".name").value
             const author = document.querySelector(".author").value
             const pages = document.querySelector(".pages").value
@@ -102,7 +102,6 @@ const addToLib = function(event){
                 !selected) {
                     return ""
             }
-            event.preventDefault()
             const addB = new Book(name, author, pages, selected)
             myLibrary.push(addB)
             console.log(name)
