@@ -17,7 +17,7 @@ const update = function() {
         newDiv.className = "card"
 
         const cardTitle = document.createElement("h2")
-        cardTitle.innerText = `Titie: ${book.title}`
+        cardTitle.innerText = `Titie: ${book.name}`
         
         const author = document.createElement("h3")
         author.innerText = `Author: ${book.author}`
@@ -30,7 +30,7 @@ const update = function() {
         } else {
             read.innerText = "Not-Read"
         }
-        pages.innerText = book.pages
+        pages.innerText = `Pages: ${book.pages}`
        pages.className = "pages"
 
        const readBtn = document.createElement("img")
@@ -91,21 +91,16 @@ newBook.addEventListener("click", () => {
 
 
 const addToLib = function(event){
-    event.preventDefault()
+    event.preventDefault()    
             const name = document.querySelector(".name").value
             const author = document.querySelector(".author").value
             const pages = document.querySelector(".pages").value
             const selected = document.querySelector('input:checked').value;
-            if(!name ||
-                !author || 
-                !pages ||
-                !selected) {
-                    return ""
-            }
             const addB = new Book(name, author, pages, selected)
             myLibrary.push(addB)
             console.log(name)
             update()
+
     }
     // no database so no default submit
 
