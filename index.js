@@ -3,21 +3,21 @@ const bookList = document.querySelector(".book-list")
 const bookForm = document.querySelector(".add-book")
 const btnSubmit = document.querySelector(".form-submit")
 const delBtn = document.querySelector(".delete-button")
+const card = document.querySelectorAll(".card")
 
 
-let myLibrary = [ ]
+let myLibrary = []
 
 const update = function() {
+
     myLibrary.forEach((book, i) => {
-    book.index = i
-    console.log(book)
-    console.log(i)
-    // checks if book is already inserted
+        if (!book.index) {
+            book.index = i +1
         const newDiv =  document.createElement("div")
         newDiv.className = "card"
 
         const cardTitle = document.createElement("h2")
-        cardTitle.innerText = `Titie: ${book.name}`
+        cardTitle.innerText = `Titie: ${book.index}`
         
         const author = document.createElement("h3")
         author.innerText = `Author: ${book.author}`
@@ -45,11 +45,16 @@ const update = function() {
         delBtn.addEventListener("click", function() {
             console.log(book.index)
             this.parentNode.parentNode.removeChild(this.parentNode)
-            myLibrary.splice(book.index, 1)
+            myLibrary.splice(i, 1)
+
 
         })
 
-})
+        } else {
+            return
+        }
+        }
+)
 }
 
 function Book(name, author, pages, read){
@@ -72,23 +77,18 @@ newBook.addEventListener("click", () => {
 
 const addToLib = function(event){
     event.preventDefault()
-    for(let i = 0; i < myLibrary.length; i++) {
-        if(myLibrary[i] == true && myLibrary.length != 0) {
-        } else {
             const name = document.querySelector(".name").value
             const author = document.querySelector(".author").value
             const pages = document.querySelector(".pages").value
             const selected = document.querySelector('input:checked').value;
-            const index = myLibrary.length
             const addB = new Book(name, author, pages, selected)
             myLibrary.push(addB)
             console.log(name)
             update()
-        }
     }
     // no database so no default submit
 
-}
+
 
 btnSubmit.addEventListener("click", addToLib, false)
 
