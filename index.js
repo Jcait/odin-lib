@@ -17,7 +17,7 @@ const update = function() {
         newDiv.className = "card"
 
         const cardTitle = document.createElement("h2")
-        cardTitle.innerText = `Titie: ${book.index}`
+        cardTitle.innerText = `Titie: ${book.title}`
         
         const author = document.createElement("h3")
         author.innerText = `Author: ${book.author}`
@@ -53,9 +53,8 @@ const update = function() {
         } else {
             return
         }
-        }
-)
-}
+    }   
+)}
 
 function Book(name, author, pages, read){
     this.name = name;
